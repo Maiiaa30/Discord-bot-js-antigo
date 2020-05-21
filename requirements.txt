@@ -1,0 +1,6 @@
+git+https://github.com/Roberto1337/bot/blob/master/bot..js
+discord.js==6.12.0
+jimp==6.12.0
+gif-to-apng==6.12.0
+lowdb==6.12.0
+png-img==6.12.0
