@@ -18,8 +18,7 @@ const config = require("./config.json");
 
 client.on("ready", () => {
     console.log(`Bot iniciado`);
-    client.user.setActivity( //`Em ${client.guilds.size} servidores`
-        'Testing New Things');
+    client.user.setActivity(`Em ${client.guilds.size} servidores`);
 });
 
 client.on("guildCreate", guild => {
