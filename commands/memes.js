@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
         const random = subReddits[Math.floor(Math.random() * subReddits.length)];
 
         const img = await randomPuppy(random);
-        const embed = new RichEmbed()
+        const embed = new Discord.MessageEmbed()
             .setColor("RANDOM")
             .setImage(img)
             .setTitle(`From /r/${random}`)
