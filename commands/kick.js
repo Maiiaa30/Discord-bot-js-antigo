@@ -5,7 +5,7 @@ exports.run = async (client, message, args) => {
     if(!member)
         return message.reply("Menciona um membro valido deste servidor!");
     if(!member.kickable)
-        return message.reply("Não posso kickar essa pessoa! Tens role para poder kickar pessoas?")
+        return message.reply("Não posso kickar essa pessoa! Tens role para poder kickar pessoas?");
     let reason = args.slice(1).join(' ');
     if(!reason) reason = "Sem razão";
     await member.kick(reason)
