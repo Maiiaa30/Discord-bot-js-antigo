@@ -171,7 +171,7 @@ client.on("guildMemberAdd", (member) => {
     const channel = member.guild.channels.find(channel => channel.name === 'programaçao-da-festa');
     if(!channel) return;
     channel.send(`Boas ${member} esta e a nova transferência ${member.guild.name}!`)
-})
+});
 
     client.on("guildMemberRemove", (member) => {
         const out = member.guild.channels.find(channel => channel.name === 'programaçao-da-festa');
