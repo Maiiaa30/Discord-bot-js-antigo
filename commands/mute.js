@@ -5,7 +5,7 @@ const Discord = require("discord.js");
 exports.run = async (client, message, agrs) => {
     // Check perms, self, rank, etc
   if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('You do not have Permission to mute!');
-  const toMute = message.mentions.members.first() || message.guild.members.get(args[1]);
+  const toMute = message.mentions.members.first() || message.guild.members.get(args[2]);
   if (!toMute) return message.channel.send('You did not specify a user mention or ID!');
   if (toMute.id === message.author.id) return message.channel.send('You can not mute yourself!');
   if (toMute.highestRole.position >= message.member.highestRole.position) return message.channel.send('You can not mute a member that is equal to or higher than yourself!');
@@ -43,7 +43,7 @@ exports.run = async (client, message, agrs) => {
   // Check current time and add muted time to it, then convert to seconds from milliseconds
   client.muted[toMute.id] = {
     guild: message.guild.id,
-    time: Date.now() + parseInt(args[2]) * 1000
+    time: Date.now() + parseInt(args[3]) * 1000
   };
 
   // Add the mentioned user to the "mutedRole" and notify command sender
