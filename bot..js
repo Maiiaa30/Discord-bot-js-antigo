@@ -174,7 +174,7 @@ client.on("guildMemberAdd", (member) => {
 })
 
     client.on("guildMemberRemove", (member) => {
-        const out = member.guild.channels.find(channel => channel.name === 'programaçao-da-festa');
+        const channel = member.guild.channels.find(channel => channel.name === 'programaçao-da-festa');
         if(!out) return;
         channel.send(`Xauu Xauuu ${member.user.username} foi para as reservas que se fodeu (${member.guild.name})`)
     })
