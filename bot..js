@@ -82,9 +82,9 @@ client.on("message", async message => {
     } catch(error) {} 
     finally {}
 
-    switch (args[0]) {
-        case 'mute':
-            let person = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]))
+    switch (args[1]) {
+    case 'mute':
+            let person = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[2]))
             if(!person) return message.reply('Não foi possivel encontrar esse user.')
             
             let mainrole = message.guild.roles.find(role => role.name === "Cucu");
@@ -92,7 +92,7 @@ client.on("message", async message => {
 
             if(!muterole) return message.reply('Não existe role de mute. Cria uma role chamada Mute.')
 
-            let time = args[2];
+            let time = args[3];
 
             if(!time) {
                 return message.reply('Não colocaste o tempo para dar mute.');
@@ -167,31 +167,13 @@ client.on("message", async message => {
 
 });
 
-client.on("guildMemberAdd", async member => {
+client.on("guildMemberAdd", (member) => {
     const channel = member.guild.channels.find(channel => channel.name === 'programaçao-da-festa');
     if(!channel) return;
     channel.send(`Boas ${member} esta e a nova transferência do arentim ${member.guild.name}!`)
-    let canal = client.channels.get("646804230262226986")
-    let fonte = await jimp.loadFont(jimp.FONT_SANS_32_BLACK)
-    let mask = await jimp.read('mascara.png')
-    let fundo = await jimp.read('fundo.png')
-    
-    jimp.read(member.user.displayAvatarURL).then(avatar => {
-            avatar.resize(130, 130)
-            mask.resize(130, 130)
-            avatar.mask(mask)
-            fundo.print(fonte, 170, 175, member.user.username)
-            fundo.composite(avatar, 40, 90).write('welcome.png')
-            canal.send(``, { files: ["welcome.png"]})
+})
 
-            console.log('Imagem enviada para o discord!')
-        })
-        .catch (err => {
-            console.log('Erro ao carregar a imagem')
-        });
-    })
-
-    client.on("guildMemberRemove", async member => {
+    client.on("guildMemberRemove", (member) => {
         const out = member.guild.channels.find(channel => channel.name === 'programaçao-da-festa')
         if(!out) return;
         channel.send(`Xauu Xauuu ${member.user.username} foi para as reservas que se fodeu (${member.guild.name})`)
